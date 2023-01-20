@@ -14,5 +14,6 @@ int main(void)
 {
 	Engine::Application* app = new MyApp();
 	app->Run();
+	delete app;
 	return 0;
 }
