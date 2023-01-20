@@ -5,10 +5,6 @@
 class MyApp : public Engine::Application
 {
 public:
-	virtual void OnStart() override
-	{
-		m_Window->EventCallback = &OnEvent;
-	}
 	virtual void OnUpdate() override
 	{
 

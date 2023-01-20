@@ -6,7 +6,7 @@ namespace Engine {
 
 	Application::Application()
 	{
-		
+		m_Window->EventCallback = &Application::OnEvent;
 	}
 
 	void Application::Run()
