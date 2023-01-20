@@ -1,5 +1,4 @@
 #include <iostream>
-#include <functional>
 #include <Engine.h>
 
 class MyApp : public Engine::Application
@@ -13,7 +12,7 @@ public:
 
 int main(void)
 {
-	std::unique_ptr<MyApp> app = std::make_unique<MyApp>();
+	Engine::Application* app = new MyApp();
 	app->Run();
 	return 0;
 }

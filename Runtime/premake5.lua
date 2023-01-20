@@ -14,7 +14,7 @@ project "Runtime"
     }
 
     includedirs {
-        "%{wks.location}/Engine/"
+        "%{wks.location}/Engine/src/",
     }
 
     links {
