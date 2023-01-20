@@ -5,6 +5,9 @@ workspace "GameEngine"
 
 outputdir = "%{cfg.shortname}-%{cfg.system}-%{cfg.architecture}/"
 
-include "Engine"
-include "Runtime"
-include "vendor/glfw"
+group "Dependancies"
+    include "Engine"
+    include "Runtime"
+    include "vendor/glfw"
+
+group ""
