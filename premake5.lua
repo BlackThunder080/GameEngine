@@ -11,3 +11,4 @@ group ""
 
 group "Dependancies"
     include "vendor/glfw"
+    include "vendor/glad"

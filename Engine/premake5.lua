@@ -16,10 +16,13 @@ project "Engine"
     includedirs {
         "%{prj.location}/src",
         "%{wks.location}/vendor/GLFW/include",
+        "%{wks.location}/vendor/glad/include",
     }
 
     links {
         "GLFW",
+        "Glad",
+        "opengl32",
     }
 
     filter "configurations:Debug"

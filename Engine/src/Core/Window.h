@@ -1,7 +1,8 @@
 #pragma once
 #include <vector>
 #include <functional>
-#include "Event.h"
+#include "Rendering/Renderer.h"
+#include "Events/Event.h"
 
 struct GLFWwindow;
 
@@ -10,14 +11,12 @@ namespace Engine {
 	class Window
 	{
 	public:
-		Window();
-		~Window();
-		void Update();
-		void Render();
-		std::function<void(Engine::Event*)> EventCallback;
-		bool shouldClose;
-	private:
-		GLFWwindow* m_GlfwWindow;
+		virtual void Update() = 0;
+		virtual void Draw() = 0;
+		std::function<void(Engine::Event*)> EventCallback = nullptr;
+		bool shouldClose = false;
+	protected:
+		std::unique_ptr<Renderer> m_Renderer;
 	};
 
 }

@@ -1,12 +1,15 @@
-#include "Application.h"
-#include <GLFW/glfw3.h>
 #include <iostream>
+#include <GLFW/glfw3.h>
+#include "Application.h"
+#include "Events/Event.h"
+#include "Platform/GLFW/GLFWWindow.h"
 
 namespace Engine {
 
 	Application::Application()
 	{
-		m_Window->EventCallback = &Application::OnEvent;
+		m_Window = std::make_unique<GLFWWindow>();
+		m_Window->EventCallback = &Application::EventCallback;
 	}
 
 	void Application::Run()
@@ -16,13 +19,13 @@ namespace Engine {
 		{
 			OnUpdate();
 			m_Window->Update();
-			m_Window->Render();
+			m_Window->Draw();
 		}
 	}
 
-	void Application::OnEvent(Event* e)
+	void Application::EventCallback(Event* e)
 	{
-		std::cout << "Event" << std::endl;
+
 	}
 
 	Application::~Application()
