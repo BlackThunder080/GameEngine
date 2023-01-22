@@ -15,6 +15,7 @@ project "Runtime"
 
     includedirs {
         "%{wks.location}/Engine/src/",
+        "%{wks.location}/vendor/spdlog/include/",
     }
 
     links {

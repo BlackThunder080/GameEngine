@@ -1,6 +1,7 @@
 #pragma once
 #include <memory>
 #include "Window.h"
+#include "Logger.h"
 #include "Events/Event.h"
 
 struct GLFWwindow;
@@ -16,8 +17,8 @@ namespace Engine {
 		virtual void OnUpdate() {};
 		virtual ~Application();
 	protected:
-		std::unique_ptr<Window> m_Window;
 	private:
+		std::unique_ptr<Window> m_Window;
 		static void EventCallback(Event* e);
 	};
 

@@ -1,3 +1,6 @@
 [submodule "vendor/glfw"]
 	path = vendor/glfw
 	url = https://www.github.com/TheCherno/glfw.git
+[submodule "vendor/spdlog"]
+	path = vendor/spdlog
+	url = https://www.github.com/gabime/spdlog.git

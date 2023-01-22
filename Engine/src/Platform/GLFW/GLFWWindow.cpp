@@ -2,6 +2,7 @@
 #include <GLFW/glfw3.h>
 #include <iostream>
 #include "GLFWWindow.h"
+#include "Core/Logger.h"
 #include "Events/KeyEvent.h"
 #include "Platform/OpenGL/OpenGLRenderer.h"
 
@@ -9,11 +10,19 @@ namespace Engine {
 
 	GLFWWindow::GLFWWindow()
 	{
-		glfwInit();
+		if (!glfwInit())
+			Logger::Console()->error("Couldn't Initialize GLFW");
+		
 		m_GlfwWindow = glfwCreateWindow(1600, 900, "Window", nullptr, nullptr);
 		glfwMakeContextCurrent(m_GlfwWindow);
 
+		if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
+			Logger::Console()->error("Couldn't Initialize GLAD");
+
 		glfwSetWindowUserPointer(m_GlfwWindow, this);
+		glfwSetWindowSizeCallback(m_GlfwWindow, [](GLFWwindow* window, int width, int height) {
+			glViewport(0, 0, width, height);
+		});
 		glfwSetKeyCallback(m_GlfwWindow, [](GLFWwindow* window, int key, int scancode, int action, int mods) {
 			Window* EngineWindow = (Window*)glfwGetWindowUserPointer(window);
 
@@ -32,11 +41,6 @@ namespace Engine {
 			}
 		});
 
-		if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
-		{
-			std::cerr << "Couldn't Initialize GLAD" << std::endl;
-			exit(1);
-		}
 
 		m_Renderer = std::make_unique<OpenGLRenderer>();
 		m_Renderer->Init();
@@ -56,7 +60,6 @@ namespace Engine {
 	void GLFWWindow::Draw()
 	{
 		m_Renderer->Render();
-	
 		glfwSwapBuffers(m_GlfwWindow);
 	}
 
