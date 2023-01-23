@@ -15,8 +15,9 @@ project "Engine"
 
     includedirs {
         "%{prj.location}/src",
-        "%{wks.location}/vendor/GLFW/include",
+        "%{wks.location}/vendor/glfw/include",
         "%{wks.location}/vendor/glad/include",
+        "%{wks.location}/vendor/glm",
         "%{wks.location}/vendor/spdlog/include",
     }
 

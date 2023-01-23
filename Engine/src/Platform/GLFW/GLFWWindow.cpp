@@ -13,6 +13,7 @@ namespace Engine {
 		if (!glfwInit())
 			Logger::Console()->error("Couldn't Initialize GLFW");
 		
+		glfwWindowHint(GLFW_SAMPLES, 4);
 		m_GlfwWindow = glfwCreateWindow(1600, 900, "Window", nullptr, nullptr);
 		glfwMakeContextCurrent(m_GlfwWindow);
 
@@ -41,9 +42,7 @@ namespace Engine {
 			}
 		});
 
-
 		m_Renderer = std::make_unique<OpenGLRenderer>();
-		m_Renderer->Init();
 	}
 
 	GLFWWindow::~GLFWWindow()
